@@ -44,6 +44,7 @@ jQuery(function ($) {
     var $businessWindow = $('#business-window');
     var $businessItemTemplate = $($('#business-item-template').html());
     var $realEstateItemTemplate = $($('#real-estate-item-template').html());
+    var $landWindow = $('#land-window');
 
     var $realEstateTableBody = $('.income .real-estate table tbody');
     var $smallBusinessTableBody = $('.income .small-business table tbody');
@@ -414,10 +415,47 @@ jQuery(function ($) {
         calculateBalance();
     });
 
-
-
-
-
+    var land = {
+        data: [],
+        templateFunc: _.template(document.getElementById('land-item-template').innerHTML),
+        targetElem: document.querySelector('#land tbody'),
+        add: function () {
+            this.data.push({
+                name: $landWindow.find('.name').val(),
+                amount: $landWindow.find('.amount').val(),
+                price: $landWindow.find('.price').val()
+            });
+            this.draw();
+        },
+        remove: function (target) {
+            if(confirm('Уверены что хотите продать?')){
+                var index = Array.prototype.indexOf.call(document.querySelectorAll('#land tbody tr'), target);
+                this.data.splice(index, 1);
+                this.draw();
+            }
+        },
+        draw: function () {
+            var obj = this;
+            this.targetElem.innerHTML = this.data.reduce(function (prevVal, currentVal) {
+                return prevVal + obj.templateFunc({'item': currentVal});
+            }, '');
+        }
+    };
+    $landWindow.find('.add-btn').click(function () {
+        land.add();
+        $popUpBg.removeClass('active');
+        $landWindow.removeClass('active');
+    });
+    document.getElementById('add-land-btn').addEventListener('click', function () {
+        $popUpBg.addClass('active');
+        $landWindow.find('input').val('');
+        $landWindow.addClass('active').find('input.name').focus();
+    });
+    document.getElementById('land').addEventListener('click', function (e) {
+        if(e.target.classList.contains('delete')){
+            land.remove(e.target);
+        }
+    });
 
 
     // хранение данных
@@ -456,6 +494,8 @@ jQuery(function ($) {
 
         cashflow.businessList = businessList;
         cashflow.realEstate = realEstate;
+
+        cashflow.land = land.data;
 
         cashflow.isWorkless = balance.isWorkless;
         cashflow.debt = getVal('debt');
@@ -517,6 +557,11 @@ jQuery(function ($) {
         });
         drawRealEstateList();
         calculatePassiveIncome();
+
+
+        land.data = cashflow.land;
+        if(land.data === undefined) land.data = [];
+        land.draw();
 
         document.getElementById('balance-is-workless').checked = cashflow.isWorkless;
         balance.isWorkless = cashflow.isWorkless;

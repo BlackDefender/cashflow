@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bundle.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
     <script type="text/javascript" src="js/pop-up.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/calc.js"></script>
@@ -133,9 +134,24 @@
             </table>
             <button class="btn btn-success add-income-btn" id="add-big-business-btn">Добавить крупный бизнес</button>
         </div>
+
+        <div class="sub-block">
+            <div class="sub-block-title">Земельные участки</div>
+            <table id="land" class="land">
+                <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Количество соток</th>
+                    <th>Цена за сотку</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <button  class="btn btn-success add-income-btn" id="add-land-btn">Добавить участок</button>
+        </div>
     </div>
-
-
 
 
     <div class="block spending" id="spending">
@@ -202,6 +218,7 @@
             <div class="input-wrap"><input type="number"></div>
         </div>
     </div>
+
     <div class="block start-credits" id="start-credits">
         <div class="item clear-float">
             <span class="title">Сумма кредита на квартиру:</span>
@@ -258,6 +275,28 @@
     </div>
 </div>
 
+<div class="pop-up-window" id="land-window">
+    <div class="close-btn"></div>
+    <div class="pop-up-window-content-wrap">
+        <div class="header">Добавление земельного участка:</div>
+        <div class="block">
+            <div class="item clear-float">
+                <span class="title">Название:</span>
+                <div class="input-wrap"><input class="name" type="text"></div>
+            </div>
+            <div class="item clear-float">
+                <span class="title">Количество соток:</span>
+                <div class="input-wrap"><input class="amount" type="number"></div>
+            </div>
+            <div class="item clear-float">
+                <span class="title">Цена за сотку:</span>
+                <div class="input-wrap"><input class="price" type="number"></div>
+            </div>
+        </div>
+        <button class="btn btn-success add-btn">Сохранить</button>
+    </div>
+</div>
+
 <div id="pop-up-bg"></div>
 
 <script type="template" id="real-estate-item-template">
@@ -284,6 +323,16 @@
     </tr>
 </script>
 
+<script type="template" id="land-item-template">
+    <tr>
+        <td><%= item.name %></td>
+        <td><%= item.amount %></td>
+        <td><%= item.price %></td>
+        <td>
+            <button class="delete">Продать</button>
+        </td>
+    </tr>
+</script>
 
 
 <aside id="side-menu">
