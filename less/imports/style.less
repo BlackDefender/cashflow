@@ -1,0 +1,175 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.clear-float:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+main{
+    padding: 3px 10px 15px;
+    margin: auto;
+    max-width: 500px;
+}
+
+table{
+    th{
+        text-align: center;
+    }
+}
+
+.page-header{
+    text-align: center;
+}
+
+#get-salary{
+    display: block;
+    margin: 10px auto;
+}
+
+.block{
+    margin: 20px 0;
+    .header{
+        text-align: center;
+        font-weight: 600;
+    }
+    .item{
+         margin: 5px 0;
+         .title{
+             display: block;
+             width: 100px;
+             float: left;
+         }
+         .input-wrap{
+             display: block;
+             width: ~"calc(100% - 100px)";
+             float: right;
+             input:not([type="checkbox"]){
+                 width: 100%;
+             }
+         }
+        .description{
+            text-align: center;
+            clear: both;
+        }
+     }
+}
+
+
+.user-info{
+    .item{
+        .title{
+            width: 100px;
+        }
+        .input-wrap{
+            width: ~"calc(100% - 100px)";
+        }
+    }
+}
+
+.balance{
+    .item{
+        .title{
+            width: 125px;
+        }
+        .input-wrap{
+            width: ~"calc(100% - 125px)";
+        }
+    }
+    .debt-btn{
+        width: 48%;
+        &:nth-of-type(1){
+            float: left;
+        }
+        &:nth-of-type(2){
+            float: right;
+        }
+    }
+}
+
+.spending{
+    .item{
+        .title{
+            width: 260px;
+        }
+        .input-wrap{
+            width: ~"calc(100% - 260px)";
+        }
+    }
+}
+
+.start-credits{
+    border-top: 1px solid #bababa;
+    padding: 10px 0 0;
+    .item{
+        .title{
+            width: 260px;
+        }
+        .input-wrap{
+            width: ~"calc(100% - 260px)";
+        }
+    }
+}
+
+.shares{
+    margin: 20px 0;
+    width: 100%;
+    border-collapse: collapse;
+    td{
+        border: 1px solid black;
+        padding: 3px;
+        input{
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+.income{
+    .sub-block{
+        .sub-block-title{
+             text-align: center;
+             font-weight: 600;
+             margin: 20px 0 5px;
+         }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            tr{
+                td, th{
+                    border: 1px solid black;
+                    &:nth-of-type(3){
+                        width: 160px;
+                    }
+                }
+            }
+        }
+        .add-income-btn{
+            margin: 10px 0 0 auto;
+            display: block;
+        }
+    }
+
+}
+.income .sub-block.real-estate table tr{
+    th, td{
+        &:nth-of-type(3){
+            width: auto;
+        }
+        &:last-of-type{
+            width: 80px;
+            button{
+                width: 100%;
+            }
+        }
+    }
+}

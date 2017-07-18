@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Крысиные бега - калькулятор</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bundle.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/pop-up.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/calc.js"></script>
+    <script type="text/javascript" src="js/side-menu.js"></script>
+</head>
+<body>
+<main id="main">
+    <h2 class="page-header">Крысиные бега - мир бедных</h2>
+    <div class="block user-info">
+        <div class="header">Данные игрока:</div>
+        <div class="item clear-float">
+            <span class="title">Имя игрока:</span>
+            <div class="input-wrap"><input type="text" id="user-info__name"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Должность:</span>
+            <div class="input-wrap"><input type="text" id="user-info__position"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Ваша мечта:</span>
+            <div class="input-wrap"><input type="text" id="user-info__ambition"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Её стоимость:</span>
+            <div class="input-wrap"><input type="number" id="user-info__ambition-price"></div>
+        </div>
+    </div>
+
+    <div class="block balance">
+        <div class="header">Баланс:</div>
+        <div class="item clear-float">
+            <span class="title">Активный доход</span>
+            <div class="input-wrap"><input id="balance-active-income" type="number" disabled></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Уволен(а)</span>
+            <div class="input-wrap"><input type="checkbox" id="balance-is-workless"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Пассивный доход</span>
+            <div class="input-wrap"><input id="balance-passive-income" type="number" disabled></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Общий доход</span>
+            <div class="input-wrap"><input id="balance-total-income" type="number" disabled></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Общий расход</span>
+            <div class="input-wrap"><input id="balance-total-spending" type="number" disabled></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Выдать на руки</span>
+            <div class="input-wrap"><input id="balance-balance" type="number" disabled></div>
+            <div class="description">(сумма к получению на секторе получка)</div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Долги</span>
+            <div class="input-wrap"><input type="number" id="debt"></div>
+        </div>
+        <div class="clear-float">
+            <button class="btn btn-info debt-btn" id="debt-decrease">Отдать долг</button>
+            <button class="btn btn-info debt-btn" id="debt-increase">Взять в долг</button>
+        </div>
+
+        <button id="get-salary" class="btn btn-primary">ПОЛУЧКА!</button>
+    </div>
+
+    <table class="shares" id="shares">
+        <tr><th colspan="3">АКЦИИ</th></tr>
+        <tr><td>Код</td><td>Количество</td><td>Цена покупки</td></tr>
+        <tr><td>УКТ</td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>КРС</td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>КЧГ</td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>ЯКХЗ</td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>ДР</td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+
+    <div class="block income">
+        <div class="header">ДОХОДЫ</div>
+        <div class="item clear-float">
+            <span class="title">Зарплата:</span>
+            <div class="input-wrap"><input id="salary" type="number"></div>
+        </div>
+        <div class="sub-block real-estate">
+            <div class="sub-block-title">Недвижимость</div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Доход</th>
+                    <th>Сумма кредита</th>
+                    <th>Платеж по кредиту</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button class="btn btn-success add-income-btn" id="add-real-estate-btn">Добавить недвижимость</button>
+        </div>
+        <div class="sub-block small-business">
+            <div class="sub-block-title">Малый бизнес</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Доход</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button class="btn btn-success add-income-btn" id="add-small-business-btn">Добавить малый бизнес</button>
+        </div>
+        <div class="sub-block big-business">
+            <div class="sub-block-title">Крупный бизнес</div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Доход</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button class="btn btn-success add-income-btn" id="add-big-business-btn">Добавить крупный бизнес</button>
+        </div>
+    </div>
+
+
+
+
+    <div class="block spending" id="spending">
+        <div class="header">РАСХОДЫ</div>
+        <div class="item clear-float">
+            <span class="title">Квартплата / аренда жилья:</span>
+            <div class="input-wrap"><input type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Расходы на питание:</span>
+            <div class="input-wrap"><input type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Выплата кредита на квартиру:</span>
+            <div class="input-wrap"><input id="start-credit-percent-apartment" type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Выплата кредита на машину:</span>
+            <div class="input-wrap"><input id="start-credit-percent-car" type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Оплата за обучение:</span>
+            <div class="input-wrap"><input type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Оплата за тренинги:</span>
+            <div class="input-wrap"><input type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Расходы на обновление гардероба:</span>
+            <div class="input-wrap"><input type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Расходы на проезд/бензин:</span>
+            <div class="input-wrap"><input type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Расходы на телефонные переговоры:</span>
+            <div class="input-wrap"><input type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Количество детей:</span>
+            <div class="input-wrap"><input class="no-index children-count" type="number"></div>
+            <div class="description">(не более трех)</div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Расход на одного ребенка:</span>
+            <div class="input-wrap"><input class="no-index children-price" type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Новые расходы:</span>
+            <div class="input-wrap"><input type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Новые расходы:</span>
+            <div class="input-wrap"><input type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Новые расходы:</span>
+            <div class="input-wrap"><input type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Расходы по опеке:</span>
+            <div class="input-wrap"><input type="number"></div>
+        </div>
+    </div>
+    <div class="block start-credits" id="start-credits">
+        <div class="item clear-float">
+            <span class="title">Сумма кредита на квартиру:</span>
+            <div class="input-wrap"><input id="start-credit-body-apartment" type="number"></div>
+        </div>
+        <div class="item clear-float">
+            <span class="title">Сумма кредита на машину:</span>
+            <div class="input-wrap"><input id="start-credit-body-car" type="number"></div>
+        </div>
+    </div>
+</main>
+
+<div class="pop-up-window" id="real-estate-window">
+    <div class="close-btn"></div>
+    <div class="pop-up-window-content-wrap">
+        <div class="header">Добавление недвижимости:</div>
+        <div class="block">
+            <div class="item clear-float">
+                <span class="title">Название:</span>
+                <div class="input-wrap"><input class="name" type="text"></div>
+            </div>
+            <div class="item clear-float">
+                <span class="title">Арендная плата:</span>
+                <div class="input-wrap"><input class="rent" type="number"></div>
+            </div>
+            <div class="item clear-float">
+                <span class="title">Кредит:</span>
+                <div class="input-wrap"><input class="credit-body" type="number"></div>
+            </div>
+            <div class="item clear-float">
+                <span class="title">Ежемесячные проценты:</span>
+                <div class="input-wrap"><input class="credit-percent" type="number"></div>
+            </div>
+        </div>
+        <button class="btn btn-success add-btn">Сохранить</button>
+    </div>
+</div>
+
+<div class="pop-up-window" id="business-window">
+    <div class="close-btn"></div>
+    <div class="pop-up-window-content-wrap">
+        <div class="header">Малый бизнес:</div>
+        <div class="block">
+            <div class="item clear-float">
+                <span class="title">Название:</span>
+                <div class="input-wrap"><input class="name" type="text"></div>
+            </div>
+            <div class="item clear-float">
+                <span class="title">Доход:</span>
+                <div class="input-wrap"><input class="income" type="number"></div>
+            </div>
+        </div>
+        <button class="btn btn-success add-btn">Сохранить</button>
+    </div>
+</div>
+
+<div id="pop-up-bg"></div>
+
+<script type="template" id="real-estate-item-template">
+    <tr class="passive-income-item">
+        <td class="name"></td>
+        <td class="rent"></td>
+        <td class="credit-body"></td>
+        <td class="credit-percent"></td>
+        <td>
+            <button class="edit-estate">Изменить</button>
+            <button class="sell-estate">Продать</button>
+        </td>
+    </tr>
+</script>
+
+<script type="template" id="business-item-template">
+    <tr class="passive-income-item">
+        <td class="name"></td>
+        <td class="value"></td>
+        <td>
+            <button class="edit-business">Изменить</button>
+            <button class="delete-business">Удалить</button>
+        </td>
+    </tr>
+</script>
+
+
+
+<aside id="side-menu">
+    <div class="side-menu-content-wrap">
+        <div id="side-menu-buttons">
+            <button class="btn btn-danger" id="start-new-game">Новая игра</button>
+        </div>
+        <div id="calc">
+            <div class="calc-title">Калькулятор</div>
+            <input type="text" disabled id="calc_input">
+            <input type="text" disabled id="calc_output">
+            <div class="keyboard">
+                <button type="button" data-action="insert-data" class="btn btn-info" data-val="(">(</button>
+                <button type="button" data-action="insert-data" class="btn btn-info" data-val=")">)</button>
+                <button type="button" data-action="step-back" class="btn btn-info">&larr;</button>
+                <button type="button" data-action="clear" class="btn btn-info">AC</button>
+                <div class="separator"></div>
+                <button type="button" data-action="insert-data" class="btn btn-default" data-val="7">7</button>
+                <button type="button" data-action="insert-data" class="btn btn-default" data-val="8">8</button>
+                <button type="button" data-action="insert-data" class="btn btn-default" data-val="9">9</button>
+                <button type="button" data-action="insert-operator" class="btn btn-info" data-val="/">/</button>
+                <div class="separator"></div>
+                <button type="button" data-action="insert-data" class="btn btn-default" data-val="4">4</button>
+                <button type="button" data-action="insert-data" class="btn btn-default" data-val="5">5</button>
+                <button type="button" data-action="insert-data" class="btn btn-default" data-val="6">6</button>
+                <button type="button" data-action="insert-operator" class="btn btn-info" data-val="*">*</button>
+                <div class="separator"></div>
+                <button type="button" data-action="insert-data" class="btn btn-default" data-val="1">1</button>
+                <button type="button" data-action="insert-data" class="btn btn-default" data-val="2">2</button>
+                <button type="button" data-action="insert-data" class="btn btn-default" data-val="3">3</button>
+                <button type="button" data-action="insert-operator" class="btn btn-info" data-val="-">-</button>
+                <div class="separator"></div>
+                <button type="button" data-action="insert-data" class="btn btn-default" data-val="0">0</button>
+                <button type="button" data-action="insert-data" class="btn btn-default" data-val=".">.</button>
+                <button type="button" data-action="calculate" class="btn btn-primary">=</button>
+                <button type="button" data-action="insert-operator" class="btn btn-info" data-val="+">+</button>
+            </div>
+        </div>
+    </div>
+</aside>
+<div id="side-menu-bg"></div>
+
+</body>
+</html>

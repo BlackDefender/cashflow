@@ -1,0 +1,64 @@
+#side-menu{
+    position: fixed;
+    top: 0;
+    height: 100%;
+    left: -200px;
+    width: 200px;
+    overflow: hidden;
+    z-index: 1;
+    background-color: #fff;
+
+    .side-menu-content-wrap{
+        position: relative;
+        padding: 0 0 330px;
+        min-height: 100%;
+    }
+}
+
+#side-menu-bg{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    background-color: #000000;
+    opacity: 0;
+    &.active{
+        width: 100%;
+    }
+}
+#side-menu-buttons{
+    padding: 10px;
+    button{
+        width: 100%;
+    }
+}
+
+#calc{
+    position: absolute;
+    left: 4px;
+    bottom: 5px;
+    width: 194px;
+    .calc-title{
+        text-align: center;
+        font-weight: 600;
+        padding: 0 0 5px;
+        letter-spacing: 0.05em;
+        font-size: 15px;
+    }
+    input{
+        display: block;
+        width: 192px;
+        text-align: right;
+    }
+    .keyboard{
+        padding: 5px 0 0;
+        button{
+            width: 45px;
+            height: 45px;
+        }
+        .separator{
+            margin: 2px 0;
+        }
+    }
+}
